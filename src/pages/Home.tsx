@@ -1,6 +1,6 @@
 import React from 'react';
-import {Typography, Grid, Button} from '@material-ui/core';
-import {Box} from '@mui/material';
+import {Typography, Box, Grid, Button} from '@material-ui/core';
+import TabPostagem from '../components/postagens/tabpostagem/TabPostagem';
 import './Home.css';
 
 function Home() {
@@ -22,6 +22,7 @@ function Home() {
                     <img src="https://img.freepik.com/vetores-gratis/tecnologia-anti-gravidade-com-elementos_23-2148075627.jpg?w=740&t=st=1687050794~exp=1687051394~hmac=da5ac18c4407489c13f84aad33590b24f1334d7b0d48f519e1a5b4c1007dd320" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} className='postagens'>
+                    <TabPostagem />
                 </Grid>
             </Grid>
         </>

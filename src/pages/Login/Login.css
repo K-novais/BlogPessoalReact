@@ -5,8 +5,8 @@
  .imagem{
      background-image: url(https://img.freepik.com/vetores-gratis/mini-pessoas-com-smartphone_24877-56565.jpg?w=740&t=st=1687058753~exp=1687059353~hmac=ba50c210a002b8c59ed1cc80f568329a946a15d59944d72e44810fe98708db1a);
      background-repeat: no-repeat;
-     width:50vh;
-     min-height: 50vh;
+     width: 100vh;
+     min-height: 100vh;
      background-size: cover;
      background-position: center;
  }
