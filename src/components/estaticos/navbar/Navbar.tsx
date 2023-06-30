@@ -1,12 +1,14 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography} from '@material-ui/core';
 import {Box} from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom'
 import './Navbar.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { useDispatch } from "react-redux";
 import { addToken } from '../../../store/tokens/actions';
-
+import {toast} from 'react-toastify';
 
 function Navbar() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -17,21 +19,27 @@ function Navbar() {
     
     function goLogout(){
         dispatch(addToken(''));
-        alert("Usuário deslogado")
+        toast.info('Usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
         navigate('/login')
     }
-
     var navbarComponent;
-
     if(token != ""){
-        navbarComponent = <AppBar position="static" style={{ backgroundColor: "#9370DB" }}>
+        navbarComponent = <AppBar position="static">
         <Toolbar variant="dense">
             <Box className='cursor'>
                 <Typography variant="h5" color="inherit">
                     BlogPessoal
                 </Typography>
             </Box>
-
             <Box display="flex" justifyContent="start">
                 <Link to="/home" className="text-decorator-none">
                     <Box mx={1} className='cursor'>
@@ -61,7 +69,7 @@ function Navbar() {
                     </Typography>
                 </Box>
                 </Link>
-              
+            
                     <Box mx={1} className='cursor' onClick={goLogout}>
                         <Typography variant="h6" color="inherit">
                             logout
@@ -69,7 +77,6 @@ function Navbar() {
                     </Box>
                 
             </Box>
-
         </Toolbar>
     </AppBar>
     }

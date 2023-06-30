@@ -1,13 +1,12 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
+import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
-import Tema from '../../../models/Tema';
-import {useNavigate, useParams } from 'react-router-dom';
-import { buscaId, post, put } from '../../../services/Service';
-import useLocalStorage from 'react-use-localstorage';
+import {useNavigate, useParams } from 'react-router-dom'
 import './CadastroTema.css';
+import Tema from '../../../models/Tema';
+import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-
+import { toast } from 'react-toastify';
 
 
 function CadastroTema() {
@@ -20,31 +19,35 @@ function CadastroTema() {
         id: 0,
         descricao: ''
     })
-
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error('Você precisa estar logado', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+                });
             navigate("/login")
     
         }
     }, [token])
-
     useEffect(() =>{
         if(id !== undefined){
             findById(id)
         }
     }, [id])
-
     async function findById(id: string) {
-        buscaId(`/tema/${id}`, setTema, {
+        buscaId(`/temas/${id}`, setTema, {
             headers: {
               'Authorization': token
             }
           })
         }
-
         function updatedTema(e: ChangeEvent<HTMLInputElement>) {
-
             setTema({
                 ...tema,
                 [e.target.name]: e.target.value,
@@ -54,23 +57,41 @@ function CadastroTema() {
         
         async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
             e.preventDefault()
-            console.log("tema " + JSON.stringify(tema))
+            console.log("temas " + JSON.stringify(tema))
     
             if (id !== undefined) {
                 console.log(tema)
-                put(`/tema`, tema, setTema, {
+                put(`/temas`, tema, setTema, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Tema atualizado com sucesso');
+                toast.success('Tema atualizado com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined,
+                    });
             } else {
-                post(`/tema`, tema, setTema, {
+                post(`/temas`, tema, setTema, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Tema cadastrado com sucesso');
+                toast.success('Tema cadastrado com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined,
+                    });
             }
             back()
     
@@ -79,7 +100,6 @@ function CadastroTema() {
         function back() {
             navigate('/temas')
         }
-  
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
