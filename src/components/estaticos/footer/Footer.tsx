@@ -34,11 +34,11 @@ function Footer() {
             </Box>
             <Box style={{ backgroundColor: "#9370db", height: "60px" }}>
                 <Box paddingTop={1}>
-                    <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white" }} >© 2020 Copyright:</Typography>
+                    <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white" }} >© 2023 Copyright:</Typography>
                 </Box>
                 <Box>
-                    <a target="_blank" href="https://brasil.generation.org" rel="noopener noreferrer">
-                        <Typography variant="subtitle2" gutterBottom style={{ color: "white" }} align="center">brasil.generation.org</Typography>
+                    <a target="_blank" href="https://kelly.com" rel="noopener noreferrer">
+                        <Typography variant="subtitle2" gutterBottom style={{ color: "white" }} align="center">kelly Amaral</Typography>
                     </a>
                 </Box>
             </Box>
